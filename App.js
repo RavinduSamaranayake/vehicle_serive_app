@@ -12,16 +12,18 @@ import React from 'react';
 import { createStackNavigator, createAppContainer } from 'react-navigation'; // Version can be specified in package.json
 import Login from  './app/components/Login'
 import Dashboard from  './app/components/Dashboard'
+import Splash from  './app/components/Splash'
 
 
 
 const RootStack = createStackNavigator(
   {
+    splash:Splash,
     login: Login,
     dashboard: Dashboard,
   },
   {
-    initialRouteName: 'login',
+    initialRouteName: 'splash',
   }
 );
 
