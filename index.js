@@ -9,3 +9,5 @@ import {name as appName} from './app.json';
 import Splash from './app/components/Splash';
 
 AppRegistry.registerComponent(appName, () => App);
+
+ 
