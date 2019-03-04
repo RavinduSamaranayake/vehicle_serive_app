@@ -44,26 +44,22 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import Login from  './app/components/Login'
-import Dashboard from  './app/components/Dashboard'
-import Splash from  './app/components/Splash'
+import Login from  './app/screens/Login'
+import Splash from  './app/screens/Splash'
 import Home from  './app/tabs/Home'
 import Settings from './app/tabs/Settings'
-import Profile from './app/screens/Profile'
-import Drawer from './app/components/Drawer'
-import HeaderButton from './app/components/HeaderButton';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Profile from './app/tabs/Profile'
+ 
 
-//import Icon from '@expo/vector-icons/Ionicons';
 /**
  * - AppSwitchNavigator
- *    - WelcomeScreen
- *      - Login Button
- *      - Sign Up Button
+ *    - SplashScreen
+ *    - Login Screen
+ *    - Dashboard
  *    - AppDrawerNavigator
  *          - Dashboard - DashboardStackNavigator(needed for header and to change the header based on the                     tab)
  *            - DashboardTabNavigator
- *              - Tab 1 - FeedStack
+ *              - Tab 1 - Homestack
  *              - Tab 2 - ProfileStack
  *              - Tab 3 - SettingsStack
  *            - Any files you don't want to be a part of the Tab Navigator can go here.
@@ -84,60 +80,8 @@ class App extends Component {
 }
 export default App;
 
-// class WelcomeScreen extends Component {
-//   render() {
-//     return (
-//       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-//         <Button
-//           title="Login"
-//           onPress={() => this.props.navigation.navigate('Dashboard')}
-//         />
-//         <Button title="Sign Up" onPress={() => alert('button pressed')} />
-//       </View>
-//     );
-//   }
-// }
-
-
-// class DashboardScreen extends Component {
-//   render() {
-//     return (
-//       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-//         <Text>DashboardScreen</Text>
-//       </View>
-//     );
-//   }
-// }
-
-class Feed extends Component {
-  render() {
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Feed</Text>
-      </View>
-    );
-  }
-}
-
-// class Settings extends Component {
-//   render() {
-//     return (
-//       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-//         <Text>Settings</Text>
-//       </View>
-//     );
-//   }
-// }
-
-// class Profile extends Component {
-//   render() {
-//     return (
-//       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-//         <Text>Profile</Text>
-//       </View>
-//     );
-//   }
-// }
+ 
+ 
 
 const DashboardTabNavigator = createBottomTabNavigator(
   {
@@ -162,17 +106,8 @@ const DashboardStackNavigator = createStackNavigator(
   },
   {
     defaultNavigationOptions: ({ navigation }) => {
-         
-      
-       
-          
-      
-        
-          
           return {
-
-
-            headerLeft: (
+           headerLeft: (
               <Icon
                 style={{ paddingLeft: 10 }}
                 onPress={() =>navigation.openDrawer()}
@@ -181,16 +116,7 @@ const DashboardStackNavigator = createStackNavigator(
               />
              // <HeaderButton onPress={() => navigate('settings')} />
             ),
-
-          // drawerLabel: 'Home',
-          // drawerIcon: ({ tintColor }) => (
-          //   <MaterialIcons
-          //     name="move-to-inbox"
-          //     size={24}
-          //     style={{ color: tintColor }}
-          //   />
-          // ),
-     
+ 
           };
         } 
 
