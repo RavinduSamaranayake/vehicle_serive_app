@@ -13,16 +13,16 @@ export default class Home extends Component {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
-        <HeaderButton onPress={() => navigate('DrawerOpen')} />
+        {/* <HeaderButton onPress={() => navigate('DrawerOpen')} /> */}
         <Text style={styles.header}>
-          What's up everybody!
+          Home page...!!
         </Text>
         <Button
-          onPress={() => navigate('Settings')}
+          // onPress={() => navigate('Settings')}
           title="Open Settings Tab"
         />
         <Button
-          onPress={() => navigate('Modal')}
+          // onPress={() => navigate('Modal')}
           title="Open Modal"
         />
       </View>

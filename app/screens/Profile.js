@@ -18,14 +18,15 @@ export default class Profile extends Component {
   render() {
     // Pull navigate out of this.props.navigation
     // and params out of this.props.navigation.state
-    const { navigate, state: { params } } = this.props.navigation;
+    //const { navigate, state: { params } } = this.props.navigation;
     return (
       <View style={styles.container}>
         <Text style={styles.header}>
-          This is {params.user}'s profile
+          {/* This is {params.user}'s profile */}
+          This is Kushan's Profile
         </Text>
         <Button
-          onPress={() => navigate('Modal')}
+          //onPress={() => navigate('Modal')}
           title="Open Modal"
         />
       </View>

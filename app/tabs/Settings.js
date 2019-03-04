@@ -13,16 +13,16 @@ export default class Settings extends Component {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
-        <HeaderButton onPress={() => navigate('DrawerOpen')} />
+        {/* <HeaderButton onPress={() => navigate('DrawerOpen')} /> */}
         <Text style={styles.header}>
-          Settings Tab
+          Settings Page..!!
         </Text>
         <Button
-          onPress={() => navigate('Profile', { user: 'Tom' })}
+          // onPress={() => navigate('Profile', { user: 'Tom' })}
           title="Open Profile"
         />
         <Button
-          onPress={() => navigate('Modal')}
+          // onPress={() => navigate('Modal')}
           title="Open Modal"
         />
       </View>

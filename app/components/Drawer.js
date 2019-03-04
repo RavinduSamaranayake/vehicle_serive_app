@@ -16,8 +16,8 @@ export default class Drawer extends Component {
           Drawer
         </Text>
         <Button
-          onPress={() => navigate('Modal')}
-          title="Open Modal"
+          onPress={() => navigate('Dashboard')}
+          title="Dashboard"
         />
         <Button
           onPress={() => navigate('DrawerClose')}

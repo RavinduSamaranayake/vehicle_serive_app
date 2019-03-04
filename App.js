@@ -47,6 +47,12 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Login from  './app/components/Login'
 import Dashboard from  './app/components/Dashboard'
 import Splash from  './app/components/Splash'
+import Home from  './app/tabs/Home'
+import Settings from './app/tabs/Settings'
+import Profile from './app/screens/Profile'
+import Drawer from './app/components/Drawer'
+import HeaderButton from './app/components/HeaderButton';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 //import Icon from '@expo/vector-icons/Ionicons';
 /**
@@ -92,15 +98,16 @@ export default App;
 //   }
 // }
 
-class DashboardScreen extends Component {
-  render() {
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>DashboardScreen</Text>
-      </View>
-    );
-  }
-}
+
+// class DashboardScreen extends Component {
+//   render() {
+//     return (
+//       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+//         <Text>DashboardScreen</Text>
+//       </View>
+//     );
+//   }
+// }
 
 class Feed extends Component {
   render() {
@@ -112,29 +119,29 @@ class Feed extends Component {
   }
 }
 
-class Settings extends Component {
-  render() {
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Settings</Text>
-      </View>
-    );
-  }
-}
+// class Settings extends Component {
+//   render() {
+//     return (
+//       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+//         <Text>Settings</Text>
+//       </View>
+//     );
+//   }
+// }
 
-class Profile extends Component {
-  render() {
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Profile</Text>
-      </View>
-    );
-  }
-}
+// class Profile extends Component {
+//   render() {
+//     return (
+//       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+//         <Text>Profile</Text>
+//       </View>
+//     );
+//   }
+// }
 
 const DashboardTabNavigator = createBottomTabNavigator(
   {
-    Feed,
+    Home,
     Profile,
     Settings
   },
@@ -148,43 +155,118 @@ const DashboardTabNavigator = createBottomTabNavigator(
   }
 );
 const DashboardStackNavigator = createStackNavigator(
+   
   {
     DashboardTabNavigator: DashboardTabNavigator
+
   },
   {
     defaultNavigationOptions: ({ navigation }) => {
-
+         
       
-      return {
-        headerLeft: (
-          // <Icon
-          //   style={{ paddingLeft: 10 }}
-          //   onPress={() => navigation.openDrawer()}
-          //   name="md-menu"
-          //   size={30}
-          // />
-          <Icon.Button
-          name='md-menu'
-          size={26}
-          color="#4F8EF7"
-          backgroundColor="#FFF"
-          onPress={() => navigation.openDrawer()}
-        />
-        )
-      };
+       
+          
+      
+        
+          
+          return {
+
+
+            headerLeft: (
+              <Icon
+                style={{ paddingLeft: 10 }}
+                onPress={() =>navigation.openDrawer()}
+                name="md-menu"
+                size={30}
+              />
+             // <HeaderButton onPress={() => navigate('settings')} />
+            ),
+
+          // drawerLabel: 'Home',
+          // drawerIcon: ({ tintColor }) => (
+          //   <MaterialIcons
+          //     name="move-to-inbox"
+          //     size={24}
+          //     style={{ color: tintColor }}
+          //   />
+          // ),
+     
+          };
+        } 
+
+     
     }
+   
+  
+   
+);
+
+const HomeStack = createStackNavigator(
+  {
+    home: { screen: Home },
+    settings: { screen: Settings },
+  },
+  {
+    navigationOptions: {
+      drawerLabel: 'New Home',
+      // drawerIcon: ({ tintColor }) => (
+      //   <MaterialIcons
+      //     name="move-to-inbox"
+      //     size={24}
+      //     style={{ color: tintColor }}
+      //   />
+      // ),
+    },
+  }
+);
+
+const SettingStack = createStackNavigator(
+  {
+  
+     
+      settings: { screen: Settings },
+      home: { screen: Home },
+    
+  },
+  {
+    navigationOptions: {
+      drawerLabel: 'Settings',
+      // drawerIcon: ({ tintColor }) => (
+      //   <MaterialIcons name="drafts" size={24} style={{ color: tintColor }} />
+      // ),
+    },
   }
 );
 
 const AppDrawerNavigator = createDrawerNavigator({
-  Dashboard: {
+   Dashboard: {
     screen: DashboardStackNavigator
-  }
+   },
+    
+   home: {
+      screen: HomeStack
+    },
+    settings: {
+       
+      screen: SettingStack
+    },
+  },
+
+  {
+    initialRouteName: 'Dashboard',
+    contentOptions: {
+      activeTintColor: '#e91e63',
+    },
+  
 });
 
 const AppSwitchNavigator = createSwitchNavigator({
   splash: { screen: Splash },
   login: { screen: Login },
+  home: {screen: Home},
+  settings: {screen: Settings},
+  profile: {screen: Profile},
+ // drawer: {screen: AppDrawerNavigator},
   Dashboard: { screen: AppDrawerNavigator },
   
 });
